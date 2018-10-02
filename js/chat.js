@@ -16,9 +16,9 @@ chat.fetchMessages = function() {
 
 chat.throwMessage = function(message) {
     // Save this message if it's not empty
-    if ($.trim(message) != "") {
+    if (message.trim() != "") {
         $.ajax({
-            url: "ajax.chat.php",
+            url: "ajax/chat.php",
             type: "post",
             data: {
                 method: "throw",
@@ -26,6 +26,7 @@ chat.throwMessage = function(message) {
             },
             success: function(data) {
                 chat.fetchMessages()
+                chat.entry.val("")
             }
         })
     }
@@ -38,8 +39,8 @@ chat.entry = $(".chat .entry")
 chat.entry.bind('keydown', function(e) {
     // Post message if enter key is pressed
     if (e.keyCode === 13 && !e.shiftKey) {
-        chat.throwMessage(e.target.val())
-        $(this).val("")
+        // debugger
+        chat.throwMessage($(this).val())
         e.preventDefault() // basically 'enter' shouldn't move the cursor to next line
     }
 })

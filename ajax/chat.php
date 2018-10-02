@@ -1,6 +1,7 @@
 <?php
 require_once "../core/init.php";
 
+
 if (isset($_POST['method']) && !empty($_POST['method'])) {
     $method = trim($_POST['method']);
     $chat = new Chat;
@@ -16,13 +17,17 @@ if (isset($_POST['method']) && !empty($_POST['method'])) {
 ?>
                 <div class="message">
                     <a href="#"><?= $message['name'];?></a> says:
-                    <p><?= $message['message'];?></p>
+                    <p><?= nl2br($message['message']);?></p>
                 </div>
 <?php
             }
         }
-    } elseif ($method == 'throw') {
+    } elseif ($method == 'throw' && isset($_POST['message'])) {
         // save Message in db
-
+        $message = trim($_POST['message']);
+        if (!empty($message)) {
+            $chat->throwMessage($_SESSION['user'], $message);
+            echo "success";
+        }
     }
 }
