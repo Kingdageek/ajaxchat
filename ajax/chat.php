@@ -1,5 +1,5 @@
 <?php
-require_once "../core/init.php";
+require_once __DIR__."../core/init.php";
 
 
 if (isset($_POST['method']) && !empty($_POST['method'])) {

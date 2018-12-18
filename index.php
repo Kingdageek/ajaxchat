@@ -15,7 +15,7 @@ $_SESSION['user'] = (int) ($_GET['user'] ?? 0);
     <div class="chat">
         <div class="messages">
         </div>
-        <textarea name="" id="" cols="30" rows="4" class="entry" autofocus placeholder="Type here and hit Return. Use Shift + Return for a new line.">
+        <textarea name="" id="" cols="30" rows="4" class="entry" autofocus placeholder="Type here and hit Return to Send. Use Shift + Return for a new line.">
         </textarea>
     </div>
     <script src="js/jquery.min.js"></script>
